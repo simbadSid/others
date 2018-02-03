@@ -16,13 +16,13 @@ cipher()
 	rm -f ${COMPRESS_NAME}
 
 	while true; do
-		echo -e "\t>>>>Confirm suppression of ${DIR_NAME} [Y/n]:"
+		echo -e "\t>>>>Confirm suppression of \"${DIR_NAME}\" [Y/n]:"
 		read answer
 		if [ ${answer} == "Y" ] || [ ${answer} == "y" ]; then
 			rm -rf ${DIR_NAME}
-			echo -e "\t>>>>File ${DIR_NAME} deleted"
+			echo -e "\t>>>>File \"${DIR_NAME}\" deleted"
 		elif [ ${answer} == "N" ] || [ ${answer} == "n" ]; then
-	                echo -e "\t>>>>File ${DIR_NAME} not deleted (carefull when u commit)"
+	                echo -e "\t>>>>File \"${DIR_NAME}\" not deleted (carefull when u commit)"
 		else
 			continue
 		fi
@@ -38,7 +38,6 @@ decipher()
 }
 
 
-echo "${1}"
 
 if [ ${1} == ${OPTION_CIPHER} ]; then
 	cipher
