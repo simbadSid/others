@@ -8,6 +8,11 @@ DIR_NAME="papers"
 COMPRESS_NAME="${DIR_NAME}.zip"
 CIPHERED_NAME="${COMPRESS_NAME}.gpg"
 
+myEcho()
+{
+	 echo -e "\t>>>>"${1}
+}
+
 
 cipher()
 {
@@ -16,13 +21,13 @@ cipher()
 	rm -f ${COMPRESS_NAME}
 
 	while true; do
-		echo -e "\t>>>>Confirm suppression of \"${DIR_NAME}\" [Y/n]:"
+		myEcho "Confirm suppression of \"${DIR_NAME}\" [Y/n]:"
 		read answer
 		if [ ${answer} == "Y" ] || [ ${answer} == "y" ]; then
 			rm -rf ${DIR_NAME}
-			echo -e "\t>>>>File \"${DIR_NAME}\" deleted"
+			myEcho "File \"${DIR_NAME}\" deleted"
 		elif [ ${answer} == "N" ] || [ ${answer} == "n" ]; then
-	                echo -e "\t>>>>File \"${DIR_NAME}\" not deleted (carefull when u commit)"
+	                myEcho "File \"${DIR_NAME}\" not deleted (carefull when u commit)"
 		else
 			continue
 		fi
@@ -44,5 +49,5 @@ if [ ${1} == ${OPTION_CIPHER} ]; then
 elif [ ${1} == ${OPTION_DECIPHER} ]; then
 	decipher
 else
-	echo -e "\t>>>> Usage: ${0} [${OPTION_CIPHER} | ${OPTION_DECIPHER}]"
+	myEcho "Usage: ${0} [${OPTION_CIPHER} | ${OPTION_DECIPHER}]"
 fi
