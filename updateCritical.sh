@@ -47,7 +47,7 @@ cipher()
                 echo "+++++++++++++++++++++"
 		zip -P ${PASS} -r ${file}.zip ${PATH_BASE}/${file}
                 echo "+++++++++++++++++++++"
-                echo "GPG: pass ${PASS}"
+                echo "GPG: fileName ${PASS}"
                 echo "+++++++++++++++++++++"
 		echo ${PASS} | gpg --passphrase-fd 0 --cipher-algo AES256 -c --output ${PATH_CIPHERED}/${file}.gpg ${file}.zip
 		rm -f ${file}.zip
