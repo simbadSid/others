@@ -5,18 +5,22 @@ from Crypto.Hash import SHA256
 from Crypto import Random
 
 
+STR_TITLE_PASS	= "Password"
+STR_LABEL_PASS	= "Please enter password:"
+STR_LABEL_PASS2	= "Please re-enter the same password:"
+
 def myPrint(msg, header="\t>>>>"):
 	print(header + msg)
 
 
 def getPass():
-	root = Tkinter.Tk()					# dialog needs a root window, or will create an "ugly" one for you
+	root	= Tkinter.Tk()					# dialog needs a root window, or will create an "ugly" one for you
 	root.withdraw()						# hide the root window
-	password = tkSimpleDialog.askstring(	"Password",
-						"Enter password:",
-						show='*',
-						parent=root)
+	PASS	= tkSimpleDialog.askstring(STR_TITLE_PASS, STR_LABEL_PASS, show='*', parent=root)
+	PASS2	= tkSimpleDialog.askstring(STR_TITLE_PASS, STR_LABEL_PASS2,show='*', parent=root)
 	root.destroy()						# clean up after yourself!
+	if (PASS != PASS2):
+		raise ValueError("Password mismatch!")
 	return password
 
 
@@ -42,7 +46,7 @@ def decipher(key, source, decode=True):
 	return data[:-padding]						# remove the padding
 
 
-def cipher(password)
+def cipher(password):
 	myPrint("Cipher file \"" + password + "\"")
 
 
