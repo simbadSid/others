@@ -80,23 +80,22 @@ def cipher(PASS, cipheror):
 	myPrint('---------------------', preNewLine=True)
 	myPrint('Scan directory \"' + PATH_TO_COMPRESS + '\"')
 	myPrint('---------------------')
-	for fileName_in in os.listdir(PATH_TO_COMPRESS):
-		fileName_compressed     = PATH_RESULT + fileName_in + EXTENSION_COMPRESSED
-		fileName_ciphered       = PATH_RESULT + fileName_in + EXTENSION_CIPHERED
-		compressFile		(PASS, PATH_TO_COMPRESS +       fileName_in,            fileName_compressed)
-		cipherFile      (cipheror, fileName_compressed,     fileName_ciphered)
-		call(["rm", fileName_compressed])
+	for fileRow in os.listdir(PATH_TO_COMPRESS):
+		fileCompressed	= PATH_RESULT + fileRow + EXTENSION_COMPRESSED
+		fileCiphered	= PATH_RESULT + fileRow + EXTENSION_CIPHERED
+		compressFile	(PASS, PATH_TO_COMPRESS +       fileRow,            fileCompressed)
+#		cipherFile	(cipheror, fileCompressed,     fileCiphered)
+#		call(["rm", fileCompressed])
 
 
 def decipher(PASS, cipheror):
 	myPrint('---------------------', preNewLine=True)
 	myPrint('Scan directory \"' + PATH_TO_COMPRESS + '\"')
 	myPrint('---------------------')
-	for fileName_in in os.listdir(PATH_TO_COMPRESS):
-		fileName_compressed     = PATH_RESULT + fileName_in + EXTENSION_COMPRESSED
-		fileName_ciphered       = PATH_RESULT + fileName_in + EXTENSION_CIPHERED
-		decipherFile      (cipheror, fileName_compressed,     fileName_ciphered)
-#		decompressFile		(PASS, PATH_TO_COMPRESS +       fileName_in,            fileName_compressed)
+	for fileCiphered in os.listdir(PATH_TO_COMPRESS):
+		fileCompressed	= PATH_RESULT + fileName_in + EXTENSION_COMPRESSED
+#		decipherFile	(cipheror, fileName_compressed,     fileName_ciphered)
+		decompressFile	(PASS, PATH_TO_COMPRESS +       fileName_in,            fileName_compressed)
 #		call(["rm", fileName_compressed])
 
 
@@ -110,8 +109,8 @@ if __name__ == '__main__':
 		myPrint('Abort')
 		exit (0)
 	cipheror= Cipheror(PASS)
-	
-	cipher(PASS, cipheror)
-#	decipher(PASS, cipheror)
+
+#	cipher(PASS, cipheror)
+	decipher(PASS, cipheror)
 
 
