@@ -71,3 +71,41 @@
 	### 3- Delete the created branch
 	git branch -d <newBranchName>
 
+
+# Personal tricks
+
+## Get pci devices list
+	lspci
+
+## Get network card info
+	lspci | grep -i net
+
+## ndiswrapper : use windows drivers grom linux (install and uninstall)
+	https://doc.ubuntu-fr.org/ndiswrapper#cas_particuliers
+
+## Fix touch pad problem: Install driver (details can be found on the github page):
+	git clone https://github.com/Syniurge/i2c-amd-mp2.git
+	cd i2c-amd-mp2
+	chmod +x dkms-install.sh
+	chmod +x dkms-remove.sh
+	sudo ./dkms-install.sh 
+
+## Fix the wifi problem:
+### Desactivate secure boot (BIOS/UEFI)
+
+### Install the driver of my NIC (Realtek RTL8821ce) (details can be found on the github page)
+		sudo apt-get install --reinstall git dkms linux-headers
+		sudo dnf install @development-tools
+		git clone https://github.com/tomaspinho/rtl8821ce
+		cd rtl8821ce
+		chmod +x dkms-install.sh
+		chmod +x dkms-remove.sh
+		sudo ./dkms-install.sh 
+
+### Black list the module ideapad_laptop (which forbids wifi on HW)
+		- Good solution:
+		sudo gedit /etc/modprobe.d/myownblacklist.conf
+		Write in the file the line: blacklist ideapad_laptop
+
+		- Bad solution: disable the module without blacklisting it
+		sudo modprobe -r ideapad_laptop
