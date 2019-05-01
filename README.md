@@ -103,9 +103,9 @@
 		sudo ./dkms-install.sh 
 
 ### Black list the module ideapad_laptop (which forbids wifi on HW)
-		- Good solution:
+		# Good solution:
 		sudo gedit /etc/modprobe.d/myownblacklist.conf
 		Write in the file the line: blacklist ideapad_laptop
 
-		- Bad solution: disable the module without blacklisting it
+		# Bad solution: disable the module without blacklisting it
 		sudo modprobe -r ideapad_laptop
