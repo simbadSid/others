@@ -91,18 +91,23 @@
 	sudo ./dkms-install.sh 
 
 ## Fix the wifi problem:
-### Desactivate secure boot (BIOS/UEFI)
+	# Desactivate secure boot (BIOS/UEFI)
 
-### Install the driver of my NIC (Realtek RTL8821ce) (details can be found on the github page)
-		sudo apt-get install --reinstall git dkms linux-headers
+	# Install the driver of my NIC (Realtek RTL8821ce) (details can be found on the github page)
+		sudo apt-get install --reinstall git dkms
 		sudo dnf install @development-tools
+		# If there is a probleme with linux-headers later on then use the two folowing commands:
+		dnf dowgrade kernel-devel
+		dnf distro-sync kernel-devel
+		# Download the NIC drivers
 		git clone https://github.com/tomaspinho/rtl8821ce
 		cd rtl8821ce
 		chmod +x dkms-install.sh
 		chmod +x dkms-remove.sh
+		# Dynamically load the driver as a kernel modul
 		sudo ./dkms-install.sh 
 
-### Black list the module ideapad_laptop (which forbids wifi on HW)
+	# Black list the module ideapad_laptop (which forbids wifi on HW)
 		# Good solution:
 		sudo gedit /etc/modprobe.d/myownblacklist.conf
 		Write in the file the line: blacklist ideapad_laptop
