@@ -74,6 +74,9 @@
 
 # Personal tricks
 
+## Download latex style files
+	sudo dnf install 'tex(<name>.sty)'
+
 ## Get pci devices list
 	lspci
 
